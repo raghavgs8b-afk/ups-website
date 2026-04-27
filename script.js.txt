@@ -1,0 +1,20 @@
+function calculateUPS() {
+  let load = document.getElementById("load").value;
+  let backup = document.getElementById("backup").value;
+  let voltage = document.getElementById("voltage").value;
+
+  if (!load || !backup) {
+    alert("Please enter all values");
+    return;
+  }
+
+  // Battery capacity formula (Ah)
+  let capacity = (load * backup) / voltage;
+
+  // UPS rating (VA)
+  let ups = load * 1.25;
+
+  document.getElementById("result").innerHTML =
+    `<p><b>Recommended UPS:</b> ${ups.toFixed(0)} VA</p>
+     <p><b>Battery Capacity:</b> ${capacity.toFixed(2)} Ah</p>`;
+}
